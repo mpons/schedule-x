@@ -22,6 +22,7 @@ export const externalEventToInternal = (
     .withLocation(location)
     .withPeople(people)
     .withCalendarId(event.calendarId)
+    .withCallbacks(event.callbacks)
     .withForeignProperties(foreignProperties)
     .build()
 }

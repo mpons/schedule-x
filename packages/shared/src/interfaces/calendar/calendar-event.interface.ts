@@ -1,6 +1,10 @@
 import { EventId } from '../../types/event-id'
 import { EventFragments } from './event-fragments'
 
+export type CalendarEventsCallbacks = Partial<
+  Record<'view' | 'modify' | 'delete', ((id: string) => void) | undefined>
+>
+
 export default interface CalendarEventExternal {
   id: EventId
   start: string
@@ -10,6 +14,7 @@ export default interface CalendarEventExternal {
   location?: string
   description?: string
   calendarId?: string
+  callbacks?: CalendarEventsCallbacks
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }

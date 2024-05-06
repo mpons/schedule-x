@@ -1,5 +1,6 @@
 import CalendarEventExternal, {
   CalendarEventInternal,
+  CalendarEventsCallbacks,
 } from '../../../../interfaces/calendar/calendar-event.interface'
 import { EventId } from '../../../../types/event-id'
 import CalendarConfigInternal from '../../../../interfaces/calendar/calendar-config'
@@ -32,6 +33,7 @@ export default class CalendarEventImpl implements CalendarEventInternal {
     public location?: string,
     public description?: string,
     public calendarId?: string,
+    public callbacks?: CalendarEventsCallbacks,
     private _foreignProperties: Record<string, unknown> = {}
   ) {}
 
@@ -123,6 +125,7 @@ export default class CalendarEventImpl implements CalendarEventInternal {
       location: this.location,
       description: this.description,
       calendarId: this.calendarId,
+      callbacks: this.callbacks,
       ...this._getForeignProperties(),
     }
   }

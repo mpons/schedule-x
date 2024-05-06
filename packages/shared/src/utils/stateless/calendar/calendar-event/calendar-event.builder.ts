@@ -1,4 +1,7 @@
-import { CalendarEventInternal } from '../../../../interfaces/calendar/calendar-event.interface'
+import {
+  CalendarEventInternal,
+  CalendarEventsCallbacks,
+} from '../../../../interfaces/calendar/calendar-event.interface'
 import Builder from '../../../../interfaces/builder.interface'
 import CalendarEventImpl from './calendar-event.impl'
 import { EventId } from '../../../../types/event-id'
@@ -12,6 +15,7 @@ export default class CalendarEventBuilder
   private description: string | undefined
   private title: string | undefined
   private calendarId: string | undefined
+  private callbacks?: CalendarEventsCallbacks
   private _foreignProperties: Record<string, unknown> = {}
 
   constructor(
@@ -32,6 +36,7 @@ export default class CalendarEventBuilder
       this.location,
       this.description,
       this.calendarId,
+      this.callbacks,
       this._foreignProperties
     )
   }
@@ -65,6 +70,16 @@ export default class CalendarEventBuilder
 
   withCalendarId(calendarId: string | undefined): CalendarEventBuilder {
     this.calendarId = calendarId
+    return this
+  }
+
+  withCallbacks(callbacks?: CalendarEventsCallbacks): CalendarEventBuilder {
+    this.callbacks = {
+      view: callbacks?.view,
+      modify: callbacks?.modify,
+      delete: callbacks?.delete,
+    }
+
     return this
   }
 }

@@ -13,6 +13,7 @@ import DescriptionIcon from '@schedule-x/shared/src/components/icons/description
 import { getTimeStamp } from '@schedule-x/shared/src/utils/stateless/time/date-time-localization/get-time-stamp'
 import { useIconColors } from './utils/stateful/use-icon-colors'
 import { Fragment } from 'preact/jsx-runtime'
+import { ActionButtons } from './components/action-buttons'
 
 export default function EventModal({ $app }: EventModalProps) {
   const [modalId] = useState(randomStringId())
@@ -127,6 +128,11 @@ export default function EventModal({ $app }: EventModalProps) {
                   {calendarEvent.description}
                 </div>
               )}
+
+              <ActionButtons
+                translate={$app.translate}
+                calendarEvent={calendarEvent}
+              />
             </Fragment>
           )}
         </div>

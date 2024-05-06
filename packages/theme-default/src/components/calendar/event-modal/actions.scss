@@ -1,0 +1,21 @@
+.sx__action-buttons {
+  display: flex;
+  justify-content: end;
+  margin-top: var(--sx-spacing-padding3);
+}
+
+.sx__action {
+  margin-top: var(--sx-spacing-padding4);
+  border-radius: var(--sx-rounding-small);
+  border: 1px solid var(--sx-color-outline);
+  padding: var(--sx-spacing-padding1) var(--sx-spacing-padding4);
+
+  &:hover {
+    background-color: var(--sx-hover-action);
+    border-color: var(--sx-hover-action);
+  }
+
+  & + .sx__action {
+    margin-left: var(--sx-spacing-padding2);
+  }
+}
